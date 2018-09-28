@@ -12,6 +12,12 @@ function registerDriver(name, driver) {
 }
 
 function upload(file, driver, options) {
+    if (!drivers.hasOwnProperty(driver)) {
+        return Promise.reject({
+            message: `unregistered driver [${driver}]`
+        })
+    }
+
     let config = mergeConfig(options)
     const uploadFile = new UploadFile(file);
     let valid = config.validate(uploadFile);
