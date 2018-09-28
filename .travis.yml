@@ -1,4 +1,11 @@
 language: node_js
 node_js:
-  - node
-
+- node
+deploy:
+  provider: npm
+  email: cjy632258@hotmail.com
+  api_key:
+    secure: QQK8cbS5mJRW2PE5f5VIy20WF9l9/yRBOWXLLFzzhMuphgRYiQ35bT3F3IvhL4+fqZJMreUA2UmVRYVot32AErHfVT+8YZku4xAmeNl7pa6kk/+PT4Q2gzKeSl40NcWm36+D4QxhOkRUgKcl278m5K8UlJxuQc2ECzELD1LZyhXicS0/iYl+0f58GBUTJXXilOoJOmq9ll7Fy7GxT00oQMIal1Ifdo+hi5Lp1b02lBqJK4tbVCtMkEkaPlwcWdiRGtfv8zo5KO3upsMShNSNy1vgN7fg7SgRjNxbmnT8rZWDKIVaWKlsFNvfPRXGq1++aC6rvktaJp/OprznnHItaPIox27ppM5ws4U6KtmJoKhwEARciVGl7PWJnhXlCeQ5+bIrmA5Psuc6XhZ9ZRr9Ukp8Ch+6fbC99ZPciJDGUqnFQ2IRhI9oerWL3V4ozx+5zd39sClpqQ/y0PIdfUcLJJLSzXQqat5l9pxaTsvA+23EQWUW3mkzHSAhbcyknm0jmoJvauQBn/XPCjBgJy3QP5WBdHiPe7NcBk2Eypq5PG7wXk2H+m4n1iZ88/5dzwQH5e9DNJxppMI/tTaxNbpqQy0fL3Pzn0CEFl3nDxRaGi1TUzFnCbomGtMoIn2Xbm0Z7HzAzfB7xQNJUxirpxCikvyWtIhLnqLwwLEo8hYdyho=
+  on:
+    branch: master
+    repo: CaoJiayuan/js-uploader
