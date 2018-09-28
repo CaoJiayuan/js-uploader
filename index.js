@@ -1,6 +1,7 @@
 import UploadFile from './file'
-import oss from './drivers/oss'
-import server from './drivers/server'
+import oss from './lib/drivers/oss'
+import server from './lib/drivers/server'
+import {mergeConfig} from './lib/default_options'
 let drivers = {
     oss,
     server
@@ -11,7 +12,18 @@ function registerDriver(name, driver) {
 }
 
 function upload(file, driver, options) {
-    return drivers[driver].upload(new UploadFile(file), options)
+    let config = mergeConfig(options)
+    const uploadFile = new UploadFile(file);
+    let valid = config.validate(uploadFile);
+    if (valid === true) {
+        return drivers[driver].upload(uploadFile, config)
+    } else  {
+        return Promise.reject({
+            code   : 422,
+            message: typeof valid === 'string' ? valid : uploadFile.invalidFileMessage
+        })
+    }
+
 }
 
 export {
