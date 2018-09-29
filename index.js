@@ -34,5 +34,6 @@ function upload(file, driver, options) {
 
 export {
     upload,
-    UploadFile
+    UploadFile,
+    registerDriver
 }
