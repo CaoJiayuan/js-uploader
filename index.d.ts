@@ -5,7 +5,8 @@ declare interface UploadOptions {
     chunkSize ?: number,
     name ?: string,
     stsUrl ?: string,
-    url ?: string
+    url ?: string,
+    ossStorageKey ?: string
 }
 declare interface FileResponse {
     filename ?: string,
