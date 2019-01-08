@@ -1,6 +1,6 @@
 declare interface UploadOptions {
     progress ?: (process) => void,
-    validate ?: (uploadFile: UploadFile) => boolean,
+    validate?: (uploadFile: UploadFileInstance) => boolean,
     chunk ?: boolean,
     chunkSize ?: number,
     name ?: string,
@@ -13,7 +13,7 @@ declare interface FileResponse {
     url ?: string
 }
 
-declare interface UploadFile {
+declare interface UploadFileInstance {
     isImage: () => boolean,
     isVideo: () => boolean,
     getSize: () => number,
@@ -23,7 +23,7 @@ declare interface UploadFile {
 }
 
 declare interface Driver {
-    upload(uploadFile: UploadFile, options?: UploadOptions): FilePromise
+    upload(uploadFile: UploadFileInstance, options?: UploadOptions): FilePromise
 }
 
 declare interface FilePromise extends Promise<FileResponse> {
@@ -34,8 +34,14 @@ declare interface FilePromise extends Promise<FileResponse> {
 declare const upload: (file: File, driver: string, options?: UploadOptions) => FilePromise;
 declare const registerDriver: (name: string, driver : Driver) => void;
 
+declare class UploadFile {
+    new(file : File): UploadFileInstance
+    static KB: Number;
+    static MB: Number;
+}
+
 export {
     upload,
-    UploadFile,
-    registerDriver
+    registerDriver,
+    UploadFile
 }
