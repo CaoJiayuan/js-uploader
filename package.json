@@ -1,6 +1,6 @@
 {
     "name": "nerio-uploader",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "uploader",
     "main": "index.js",
     "scripts": {

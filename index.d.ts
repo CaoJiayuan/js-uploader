@@ -7,6 +7,11 @@ declare interface UploadOptions {
     stsUrl ?: string,
     url ?: string
 }
+declare interface FileResponse {
+    filename ?: string,
+    type ?: string,
+    url ?: string
+}
 
 declare interface UploadFile {
     isImage: () => boolean,
@@ -17,9 +22,20 @@ declare interface UploadFile {
     invalidFileMessage: string,
 }
 
-declare const upload: (file: File, driver: string, options ?: UploadOptions) => void;
+declare interface Driver {
+    upload(uploadFile: UploadFile, options?: UploadOptions): FilePromise
+}
+
+declare interface FilePromise extends Promise<FileResponse> {
+
+}
+
+
+declare const upload: (file: File, driver: string, options?: UploadOptions) => FilePromise;
+declare const registerDriver: (name: string, driver : Driver) => void;
 
 export {
     upload,
     UploadFile,
+    registerDriver
 }
