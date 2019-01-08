@@ -34,10 +34,10 @@ declare interface FilePromise extends Promise<FileResponse> {
 declare const upload: (file: File, driver: string, options?: UploadOptions) => FilePromise;
 declare const registerDriver: (name: string, driver : Driver) => void;
 
-declare class UploadFile {
-    new(file : File): UploadFileInstance
-    static KB: Number;
-    static MB: Number;
+declare const UploadFile: {
+    new(file: File): UploadFileInstance
+    KB: Number;
+    MB: Number;
 }
 
 export {
